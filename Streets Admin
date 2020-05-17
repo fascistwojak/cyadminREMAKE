@@ -1955,8 +1955,13 @@ local CoolkidTable = {
 		['Access'] = true;
         };
         ['314957736'] 	= {
-		['Name']   = "Fascist Wojak";
+		['Name']   = "god";
 		['Colour'] = Color3.fromRGB(215,19,19);
+		['Access'] = true;
+        };
+        ['38613229']    = {
+                ['Name']   = "fucking retard";
+		['Colour'] = Color3.fromRGB(107,50,124);
 		['Access'] = true;    
 	};
 	['105183043'] 	= {
