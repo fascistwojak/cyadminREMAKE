@@ -1955,7 +1955,7 @@ local CoolkidTable = {
 		['Access'] = true;
         };
         ['314957736'] 	= {
-		['Name']   = "god";
+		['Name']   = "FashAdmin Creator";
 		['Colour'] = Color3.fromRGB(215,19,19);
 		['Access'] = true;
         };
@@ -2528,7 +2528,7 @@ local Alias = Commands[i].Alias
 	CreateCommand(UDim2.new(0.0150422715,0,0.0127776451,0 + (i * 20)),Commands[i].Name.." "..Commands[i].Help)
 end
 
-notif("FashAdmin has loaded!","It took "..(tick() - Tick).." seconds to load (Type Commands for help)\nDiscord Invite: nXcZH36",10,"rbxassetid://2474242690") 
+notif("FashAdmin Loaded","It took "..(tick() - Tick).." seconds to load (Type Commands for help)\nDiscord Invite: nXcZH36",10,"rbxassetid://2474242690") 
 notif("Hotkeys:","No chat prefix\nCommandbar Prefix is '\nRight clicking door: lock/unlock\nPressing e with guns stomps",10,nil)   
 notif("Thumbs up for FashAdmin","Purchase#1999/Fascist Wojak#1999",10,nil)   
 
