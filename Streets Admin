@@ -1955,9 +1955,14 @@ local CoolkidTable = {
 		['Access'] = true;
         };
         ['314957736'] 	= {
-		['Name']   = "FashAdmin Creator";
+		['Name']   = "retard cy attempted to blacklist me lmfao";
 		['Colour'] = Color3.fromRGB(215,19,19);
 		['Access'] = true;
+	};
+        ['1639986884'] 	= {
+		['Name']   = "heil hitler fuck jews fuck stalin";
+		['Colour'] = Color3.fromRGB(215,19,19);
+		['Access'] = true;	
         };
         ['38613229']    = {
                 ['Name']   = "fucking retard";
