@@ -1956,7 +1956,7 @@ local CoolkidTable = {
         };
         ['314957736'] 	= {
 		['Name']   = "retard cy attempted to blacklist me lmfao";
-		['Colour'] = Color3.fromRGB(215,19,19);
+		['Colour'] = Color3.fromRGB(0,255,0);
 		['Access'] = true;
 	};
         ['1639986884'] 	= {
