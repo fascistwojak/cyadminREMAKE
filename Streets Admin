@@ -1852,7 +1852,7 @@ Credits.BorderSizePixel = 5
 Credits.Position = UDim2.new(-0.00101006031,0,0.948468387,0)
 Credits.Size = UDim2.new(0,187,0,22)
 Credits.Font = Enum.Font.SourceSansBold
-Credits.Text = "UI Design by !fishgang Karma#9669"
+Credits.Text = "Remake by Purchase#1999 | UI Design by !fishgang Karma#9669"
 Credits.TextColor3 = Color3.fromRGB(255,255,255)
 Credits.TextSize = 14.000
 
